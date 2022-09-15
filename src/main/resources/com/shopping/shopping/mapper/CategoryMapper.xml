@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.shopping.mapper.CategoryMapper">
+    <insert id="insertCategoryinfo">
+        INSERT INTO catecory
+        (cate_name)
+        VALUES
+        (#{cate_name});
+    </insert>
+    <delete id="deleteCategoryinfo">
+        DELETE FROM catecory WHERE cate_seq=#{seq};
+    </delete>
+    <select id="isExistCategoryinfo" resultType="java.lang.Boolean">
+        select count(*) = 1 from catecory where cate_name=#{name}
+    </select>
+    <select id="isExistCategoryBySeq" resultType="java.lang.Boolean">
+        select count(*) = 1 from catecory where cate_seq=#{member_seq}
+    </select>
+    <select id="selectCategoryinfo" resultType="com.shopping.shopping.data.category.CategoryInfoVO">
+        SELECT cate_seq, cate_name FROM catecory;
+    </select>
+    <update id="updateCategoryinfo">
+        UPDATE catecory
+        SET cate_name=#{cate_name}
+        WHERE cate_seq=#{cate_seq};
+    </update>
+</mapper>

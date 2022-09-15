@@ -1,0 +1,66 @@
+##################################################(20220914)
+PUT http://localhost:8088/api/category/add HTTP/1.1
+content-type: application/json
+
+{
+    "cate_name":"빵"
+}
+##################################################
+delete http://localhost:8088/api/category/delete?seq=1
+##################################################
+get http://localhost:8088/api/category/get
+##################################################
+
+PATCH  http://localhost:8088/api/category/update
+content-type: application/json
+
+{
+    "cate_seq":1,
+    "cate_name":"조리도구"
+}
+##################################################
+PUT http://localhost:8088/api/member/add
+content-type: application/json
+
+{
+    "member_grade":{
+    },
+    "member_Info":{
+        "mi_id" : "deds212",
+        "mi_pwd" : "1234",
+        "mi_name" : "asdf",
+        "mi_nickname" : "asdf",
+        "mi_birth" : "2010-09-01",
+        "mi_gen" : 1,
+        "mi_point" : 10,
+        "mi_image" : "image.jpg"
+    }
+}
+##################################################(20220915)
+delete http://localhost:8088/api/member/delete?member_seq=1
+##################################################
+get http://localhost:8088/api/member/get
+##################################################
+patch http://localhost:8088/api/member/update
+content-type: application/json
+
+{
+    "member_Info":{
+        "mi_seq": 2,
+        "mi_pwd" : "1234",
+        "mi_name" : "edsef",
+        "mi_nickname" : "edsef",
+        "mi_birth" : "2010-11-01",
+        "mi_gen" : 2,
+        "mi_point" : 12,
+        "mi_image" : "image.jpg"
+    }
+}
+##################################################
+post http://localhost:8088/api/member/login
+content-type: application/json
+
+{
+    "id":"deds",
+    "pwd":"1234"
+}

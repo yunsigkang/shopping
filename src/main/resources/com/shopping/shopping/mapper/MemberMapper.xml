@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.shopping.mapper.MemberMapper">
+    <insert id="insertMemberGrade" useGeneratedKeys="true"
+        parameterType="com.shopping.shopping.data.member.MemberGradeVO"
+        keyProperty="mg_seq">
+        INSERT INTO member_grade()
+        VALUES();
+    </insert>
+    <insert id="insertMemberInfo">
+        INSERT INTO member_info
+        (mi_mg_seq, mi_id, mi_pwd, mi_name, mi_nickname, mi_birth, mi_gen, mi_point, mi_image)
+        VALUES
+        (#{mi_mg_seq}, #{mi_id}, #{mi_pwd}, #{mi_name}, #{mi_nickname}, #{mi_birth}, #{mi_gen}, #{mi_point}, #{mi_image});
+    </insert>
+    <select id="isExistMemberInfo" resultType="java.lang.Boolean">
+        select count(*)=1 from member_info where mi_id=#{member_id}
+    </select>
+    <select id="isExistMemberBySeq" resultType="java.lang.Boolean">
+        select count(*)=1 from member_info where mi_mg_seq=#{member_seq}
+    </select>
+    <delete id="deleteMemberInfo">
+        DELETE FROM member_info WHERE mi_mg_seq=#{member_seq};
+    </delete>
+    <delete id="deleteMemberGrade">
+        DELETE FROM member_grade WHERE mg_seq=#{member_seq};
+    </delete>
+    <select id="selectMemberInfo" resultType="com.shopping.shopping.data.member.MemberInfoVO">
+        select * from member_info where mi_seq=#{member_seq};
+    </select>
+    <select id="selectMemberList" resultType="com.shopping.shopping.data.member.MemberInfoVO">
+        select * from member_info
+    </select>
+    <update id="updateMemberInfo">
+        UPDATE member_info
+        SET
+        <if test="mi_pwd != null">mi_pwd=#{mi_pwd},</if>
+        <if test="mi_name != null">mi_name=#{mi_name},</if>
+        <if test="mi_nickname != null">mi_nickname=#{mi_nickname},</if>
+        <if test="mi_birth != null">mi_birth=#{mi_birth},</if>
+        <if test="mi_gen != null">mi_gen=#{mi_gen},</if>
+        <if test="mi_point != null">mi_point=#{mi_point},</if>
+        <if test="mi_image != null">mi_image=#{mi_image},</if>
+        mi_seq=#{mi_seq}
+        WHERE mi_seq=#{mi_seq};
+    </update>
+    <select id="selectLoginMember" resultType="com.shopping.shopping.data.member.MemberInfoVO">
+        select * from member_info where mi_id=#{id} and mi_pwd=#{pwd}
+    </select>
+</mapper>
